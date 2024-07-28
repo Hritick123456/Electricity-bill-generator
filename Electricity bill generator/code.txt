@@ -1,0 +1,190 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int unit;
+    int choice;
+    string name;
+    string address;
+
+    cout << "*ELECTRICITY BILL*" << endl;
+    cout << "Enter the unit of your usage: ";
+    cin >> unit;
+
+    cout << "Enter Your State" << endl;
+    cout << "1. Rajasthan" << endl;
+    cout << "2. Punjab" << endl;
+    cout << "3. Delhi" << endl;
+    cout << "4. Maharashtra" << endl;
+    cout << "5. Gujarat" << endl;
+    cout << "6. Himachal Pradesh" << endl;
+    cout << "7. Uttar Pradesh" << endl;
+    cout << "8. Madhya Pradesh" << endl;
+    cout << "9. Andhra Pradesh" << endl;
+    cout << "10. Karnataka" << endl;
+    cin >> choice;
+
+    if (choice >= 1 && choice <= 10)
+    {
+        cout << "Enter The Name: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Enter your residential address: ";
+        getline(cin, address);
+
+        float rate = 0;
+        string stateName;
+
+        switch (choice)
+        {
+        case 1:
+            stateName = "Rajasthan";
+            if (unit <= 100)
+                rate = 5;
+            else if (unit <= 200)
+                rate = 7;
+            else if (unit <= 300)
+                rate = 10;
+            else
+                rate = 15;
+            break;
+
+        case 2:
+            stateName = "Punjab";
+            if (unit <= 200)
+            {
+                cout << "*As per the Government norms in Punjab Region, If electricity unit consumption is under 200 units then the bill amount is: 0*" << endl;
+                rate = 0;
+            }
+            else if (unit <= 300)
+                rate = 10;
+            else
+                rate = 12;
+            break;
+
+        case 3:
+            stateName = "Delhi";
+            if (unit <= 200)
+            {
+                cout << "*As per the Government norms in Delhi Region, If electricity unit consumption is under 200 units then the bill amount is: 0*" << endl;
+                rate = 0;
+            }
+            else if (unit <= 300)
+                rate = 4.5;
+            else
+                rate = 7.5;
+            break;
+
+        case 4:
+            stateName = "Maharashtra";
+            if (unit <= 100)
+                rate = 6;
+            else if (unit <= 200)
+                rate = 8.75;
+            else if (unit <= 300)
+                rate = 12.2;
+            else
+                rate = 17.7;
+            break;
+
+        case 5:
+            stateName = "Gujarat";
+            if (unit <= 100)
+                rate = 4;
+            else if (unit <= 200)
+                rate = 6;
+            else if (unit <= 300)
+                rate = 9.2;
+            else
+                rate = 13.8;
+            break;
+
+        case 6:
+            stateName = "Himachal Pradesh";
+            if (unit <= 100)
+                rate = 5.5;
+            else if (unit <= 200)
+                rate = 7.2;
+            else if (unit <= 300)
+                rate = 10.6;
+            else
+                rate = 15.8;
+            break;
+
+        case 7:
+            stateName = "Uttar Pradesh";
+            if (unit <= 100)
+                rate = 5.5;
+            else if (unit <= 200)
+                rate = 7.8;
+            else if (unit <= 300)
+                rate = 10.8;
+            else
+                rate = 15.6;
+            break;
+
+        case 8:
+            stateName = "Madhya Pradesh";
+            if (unit <= 100)
+                rate = 5.7;
+            else if (unit <= 200)
+                rate = 7.8;
+            else if (unit <= 300)
+                rate = 10.3;
+            else
+                rate = 15.2;
+            break;
+
+        case 9:
+            stateName = "Andhra Pradesh";
+            if (unit <= 100)
+                rate = 4.9;
+            else if (unit <= 200)
+                rate = 6.8;
+            else if (unit <= 300)
+                rate = 10.8;
+            else
+                rate = 14.8;
+            break;
+
+        case 10:
+            stateName = "Karnataka";
+            if (unit <= 100)
+                rate = 4;
+            else if (unit <= 200)
+                rate = 6;
+            else if (unit <= 300)
+                rate = 10.8;
+            else
+                rate = 14.8;
+            break;
+
+        default:
+            cout << "Invalid choice" << endl;
+            return 1;
+        }
+
+        float billAmount = unit * rate;
+        float gst = billAmount * 0.18;
+        float netAmount = billAmount + gst;
+
+        cout << fixed << setprecision(2);
+        cout << "\n*ELECTRICITY BILL*" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "State: " << stateName << endl;
+        cout << "Units Consumed: " << unit << endl;
+        cout << "Bill amount without GST: Rs." << billAmount << "/-" << endl;
+        cout << "GST = 18% of total Bill" << endl;
+        cout << "Amount of GST: Rs." << gst << "/-" << endl;
+        cout << "Net Bill Amount with GST included: Rs." << netAmount << "/-" << endl;
+    }
+    else
+    {
+        cout << "Invalid choice, please enter a number between 1 and 10." << endl;
+    }
+
+    return 0;
+}
